@@ -24,7 +24,7 @@
         extend: {
           colors: {
             'brand-primary': '#DD6B20',       // Terracotta/Orange for buttons and accents
-            'brand-primary-light': '#FBD38D',  // Lighter shade for hover/backgrounds
+            'brand-primary-light': '#FBD38D', // Lighter shade for hover/backgrounds
             'brand-secondary': '#6D4C41',     // Muted Brown for sub-headings
             'brand-dark': '#3E2723',          // Darkest Brown for text/footers
             'brand-background': '#FFF8F0',    // Warm Beige/Off-white for page background
@@ -38,7 +38,12 @@
 </head>
 <body class="bg-brand-background">
     <div id="root"></div>
-    <img>
+    
+    <!-- Updated display picture code -->
+    <div class="fixed top-4 right-4 z-[9999]">
+        <img src="image_JkKQDr.png" alt="User Profile Picture" class="w-12 h-12 rounded-full object-cover border-2 border-brand-primary shadow-md">
+    </div>
+
     <script type="module" src="/index.tsx"></script>
 </body>
 </html>
