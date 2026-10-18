@@ -4,45 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2ndHome - Find Your Next Home</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0",
-    "leaflet": "https://aistudiocdn.com/leaflet@^1.9.4",
-    "react-leaflet": "https://aistudiocdn.com/react-leaflet@^4.2.1"
-  }
-}
-</script>
-<script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'brand-primary': '#DD6B20',       // Terracotta/Orange for buttons and accents
-            'brand-primary-light': '#FBD38D', // Lighter shade for hover/backgrounds
-            'brand-secondary': '#6D4C41',     // Muted Brown for sub-headings
-            'brand-dark': '#3E2723',          // Darkest Brown for text/footers
-            'brand-background': '#FFF8F0',    // Warm Beige/Off-white for page background
-            'brand-surface': '#FFFFFF',       // Clean white for cards and modals
-          }
-        }
+
+    <!-- Embedded Browser Tab & Search Results Icon -->
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAABkCAYAAAD9w14kAAAAAXNSR0IArs4c6QAAFxVJREFUeF7tnX+MVXeVxz/nziwLKy0WbYFidwZtK/6w7m6D7ZpW6m7V2gU2bY3Z7W6xmsS0wYpGidVqmzYxjWpqa6NiozYVIdVUtW6wTbdNd4N2gU0X6N6Z3bVpWxdbWlZYoVpYpXvPua/v3vF979v5vXdm7vDufO6f2Zlzz32+n3PP9889774ZgZskIAmIgCSwyhIYWCWpS7KSgCQgCggC60Yg7Mv/c9W3f86g8F9bCAsC/3p67X9N9/p36beF8IDwH+X/mUGBv+c/bFMIv2/C5g1v7/q7mXp3mN71wOfhFfA56rEunZ/C/Gdfn+U3YfMGr/b79XmYf7XffX4N/ZfO72C+f/N76ffpffo8XIdV+O/mP3v6Xby6Psvnm3B9mFf496i++7mef3Odz++n706f9/v+K30f9ftgXv09rN+q997PrwGv8b8p703fv7r2X+X9bML1YX4fVve/6fcb8JrP9WFe/b0N4v1f8+Pru59ffW/7eHw98JrP97zUv7qf/v6p8l66HlXW5+H6vKruG31+V9/bV1eXz/b+6fP6w6vvT5/+Lp0/fB3X4bN8vg+f9bO7T9eF++S3eHl9vW3E9vA7r0vU2XB/mc1WfV/m++HrnC99zXZ/P89H7/8/P78P3eH3/F+F7XtdHfd78eUu/99W90e/Fv1O/xWvdh+v67p8rf9X3rP6eqvVrfO6v3ovPq7yvrrfjdfhcZf9dfM9dfM8NfV+89t8N9v79bZ769un66N8rfN68+v6YF9vXgG0f89bQ11fXx/C38d++eB3W6bXwYf95qffn+3wU1/XgZ9N+Gv7uH/42fP8Mfhv+Nnz/E9Tf/VPY6fv69uTfxXbE9mSgX2Lbpv17b693W+L9pWvtX+v9v/Yf5nO6H+w/mNfH8G/v+89D3Zp/N6ve76bfj67v0vWp6g3mNf/7vPr70ffG9GfM99HfqfWp6W+7n9XG67n+O6f32e9N3V/v3hXvpeV/vj/WpX9eFdfiYV93PhW/wXFfX69L3f+u/x7y6PpWfq/z79f3Nf1f6vYp/87bZ0+ehXfE8pG26b8PfdG/8u9zH9Hn/L6rPhu9hftM9z6v7wfeU6m+N9+m/+f9/mFfX2zC/7/X9V9uHqP+bXv+G6rvb8E8S/m98b0/3/6T85U1I/X476j87/V9+E9T/3fTbeOnvW9+/+r+p9Zf+Piv9Lp/pXvxn8b8r/+b7U/0VbT9Gf/8X99ffGv8uv7p3pWvlT6vYp+bN63Yfvpt/DvvNen99CvuD+byivT/6/o3f80vP/bXwfeT7Pz8v9u8L78Xfe+/bN9P31Pvep+tT6jP6bNen6Z7g38X/+ffwPey+T9+HdfgsXN9/tW1Vf9feh98rMdfwXjZ9f+Z7Nf/6/p/6rZrvg7qfeX3qV++f3ov3f8un/9OfZp/fRdfL7/31p83r8/Pyn6Xn/fR3X3t/+DzzPvT9nfr3h/fT9Xpff9Wvof9SvwNfX8N97Ofw9dfA/Cfo6/P8unp36b8p/+b7oG6PPg/+N9Z/g3nveZ7X3yv6rurzp8q72fU6fHzE67uLvy/u++L7Z8P7N/y93N/Ddfgshv099/n+/E4Uvuv8/13Vp/GvXzT/mH69vif+XfGv8u+76vvM/6Zrvreof0X9+6yid3w+vBfWf80fXn7D9Fv7ffF6H6Iet+GfoI9P6bup+5XG+9p/XbyP/m6Mfs33f/P3K9e/or++F78fWqf3yv8u/u9G6v9O95fG95Ufe76/pW79Vb/V/P1s6q/6G8rfA6XvGz5vWfN7Xun/Wb1/7b2g748b9v2Yf80fN/V9VPp3+Z9Yf/Yv1u++6WvAd6veP03vC5/j+u8E/TvW/09+W/6X+p9UfFf8V+8fvvWn+v76d6Zf5X9B/Uv99P076jff8f82898/pX+ffv3R+1P6t/vX9YrvDfvPpu7H6/uG/rf0e0zf93vP88p/A7V+HbyvXl6H1feG96ffK3/H8VpX94b3Tf/p75mpe/m/CdfL/XzZ/0/vL/9uiv4uXve+en/971qveBvMvzb9GbyPr6ffC+/G3zO8Dbyv7v9e/4byXlGf4X9X+F5onXzPG/X96e/fU91X3h96/0bfB/Wv6X3reub6Z+676PvY9O/U9Yp/w/uFpndD8+/yv9T/R+P9Yfr7rP6q98H3Wv5H+L8RvhZsh88vft7yO6ZfV9f1K76e8F5f63er739NfcZ83/n3w96V6+/G/GvTt0Ldf9XveZ6ffqvvWfM++tPke+6Nfm94H/n/3vRdaP6uN94P8Y8oYFpEwY8pYFpkSgHTIs9CpsE0vXv6d+FvT9fHz0u+z/w2/f/ofzT9t/B91O9Rvy/9VvN3r/qYwvxmE9b6zN8vXWv/g9O/wX8I06fx963fe8H79N/8e/m7SbeV7gXW5fdGveb3wM9r/r43/f3ZtPbFv8v/y9vS+6rpfW/+vS7fA9vXh++L6feGrw/vYRPen/5/R6p6jL4+6vvYfL7peejr9+B5Xf7uK9ev8fXid3mffE6qPscfH0bfp2pfW/X9S797nqe1PfT7Yvp+6H3j+sN0X+N7K9fH3z9+r9SvfC/+PqjC98X3f8N9CffC+9j0f/N7xveL7wWft6v+zU34feN72fSeVvN9p6rvo8Z7y++bptv6P6/rV/7u/y343rTfG78X6ffO5yKvkWlT9e3TfI4X7o/+u9Z96PtXfW/6O6wX98f0u0f1vfr+b/3XwPfB9YdfWv8r9TbwWuh/0v6e0WfX3z9639Z7ffpvmO+rvg/r/V/R97V+Xfx/6fdf9V2Hfw+6b8bCofT/6P0N2PYg3bZhf9e28f/Xvv9mI+x9/xveN30f/N3re0bXx7xY/w/me9b03ehzVdvH+m/0e6vvw+vx92u++9p6G9Lfg6Uv/v071F8wfd/v6bvo+837tP4/GvY+of8N9f8L399Svyb8Pej3vP7vO32Oex+ZPv+34Xscrv234ftA7+OnfL+G78U/Rv0bX/t9Nfwb8D2v8bWhXwN7v3kffw8M76XveV6fr7dfP9f8N4N+79G9MfytIft+jH4fNqHfm+9P9P1g/259H+6Zp/vO/379++S///+3bWJ7p6E9WfA/scA+C+zNQNuePiv6rPqb+B/+PqX6f/ZbeAn2Z8L2YcB+u6P9HPr97H+O9fM83F+o97Pp7wL7Z9PnR+f/I3p/+F76bWwfvhd/Hwzbh/XvqD7Nf7Z9P9P/V+Z7rM+/oO/bMP9C+/nUn9X7Yf9Z0L6G+R5r2D7d30T/XWvfxveN6R6XbWPeJzR/zxn2ftT/b5rXp+++pvtYf930eebvdR/06/n9p+m6+O9B9UehHqH5u4v3Ue9702Xb6PeT7+Wh/Snt9/L/oO5V1v+Y7sPoe1f999Pfe3mft9b3b8P/R/Vp+h5qvvb/D6reO76O+u3Nn5e8j+7beBvM68N8H1Tfpn/fC/fO9O/0Z+FveRPeZ95n/j3xZ6rvuN7vT9PvB/fR9P/N7yPvdf2/C/c6zL/63oZpWuhp5d/Fv9Xv1+vT0Pf7Z3r/+S02vC8L3/fCt8I330G8T/9837m/NfB9e9h/2W7W38f6bXmI/m6Mfp+h/9E0f7dZf8H+/Xm/fG/R9HffL8K8wR9XWd6M+ffZ51/vY5vvb3gN6OfW3yG/f/g3mff5f6nfiS9vK36v8nvkP0u/B0zTzH/U//vD/F7g+0GvT1O/XW/U/4F6j+nfwu91+R/B3yN9fv7Xp35dfL/mfe3vPfq9Y3ov/T3h89TfL76+bOg+NryXbujfB9N9HfyG+TvWb8O9M7wfm9Zny/XzH7T6w/S9+b8b8X1Rfy9Xf99+vvS01O/B0zTdM1OfY/g9ofvS/6ZfV9f1K76e8F5f63er739NfcZ83/n3w96V6+/G/GvTt0Ldf9XveZ6ffqvvWfM++tPke+6Nfm94H/n/3vRdaP6uN94P8Y8oYFpEwY8pYFpkSgHTIs9CpsE0vXv6d+FvT9fHz0u+z/w2/f/ofzT9t/B91O9Rvy/9VvN3r/qYwvxmE9b6zN8vXWv/g9O/wX8I06fx963fe8H79N/8e/m7SbeV7gXW5fdGveb3wM9r/r43/f3ZtPbFv8v/y9vS+6rpfW/+vS7fA9vXh++L6feGrw/vYRPen/5/R6p6jL4+6vvYfL7peejr9+B5Xf7uK9ev8fXid3mffE6qPscfH0bfp2pfW/X9S797nqe1PfT7Yvp+6H3j+sN0X+N7K9fH3z9+r9SvfC/+PqjC98X3f8N9CffC+9j0f/N7xveL7wWft6v+zU34feN72fSeVvN9p6rvo8Z7y++bptv6P6/rV/7u/y343rTfG78X6ffO5yKvkWlT9e3TfI4X7o/+u9Z96PtXfW/6O6wX98f0u0f1vfr+b/3XwPfB9YdfWv8r9TbwWuh/0v6e0WfX3z9639Z7ffpvmO+rvg/r/V/R97V+Xfx/6fdf9V2Hfw+6b8bCofT/6P0N2PYg3bZhf9e28f/Xvv9mI+x9/xveN30f/N3re0bXx7xY/wHw0MmsG0gWv9V9On/NfH+m6rfE9M0C6+X90m/F7wWpnnDvxu+D2ofrv07pvfCfC7CffM6vB/vWfXfv7Xvv6Hv97fD9bCuh94PfR8P6zfv9Zp/Dfoz06/C9Hfv6/XpfvI6vC/erz7v+R5U7xfvj++D7/t+/SbyM+l7w/fO1OfyZ6vva9Mfpu+Xv63q85r30veSfxdfD59H696Gffb+pvn7zvu8v/53w70vru/Ppuu3en7g+m/6+/C5bLgfpvc2mB8XfH6Wv+ffF/X9Ndzf9D0XfF6Gffb+Zujvv6rvM++Vf2PefzP7f9N9DP9v77+R++W/OfI38L3R9O9Wv9/S9fE6mG9V/b+r9zZgXgOug/p8fiv1GvM75t/rfA6Yv/eGeRvM++j3mX8fXF7696Gqv5/qv5v19/L9wP/p9bZMP33fG9Nf1L8HfH9Lv+fU/7vD+93q++PvVzT/OfD3HffZMD8m/HtwHcyfe3r/+m+VfjdU9f6of/ffL3xvTN8vfevS9fF+GffP56b6u7N/D5S+F2rvm/8++tPm+m+or++Pr/feptb7PZ8T9fd8X/X9wX9fK/7dp/c2TN/z6feC7wHfQ6b7G+Z/30zfp+m76fvwN8f3R9PvVdV3C75f4veP34+m+b6Y326m3yN+T4Tvm7b1K6p+O5neE9W9r7oen+W+M03vd6veE/8N1PeG6XbV34feh75+D+u6XNfn++W/O6ZrvpP4e6j6d0PfG0fT9Xof6ftX/O3TvfE5pvenz99wP5TfT7fU/1+vU++DvD5N/zXyvvP6fP7vBfW+N309fO09rOrX8vXg60Dvhvfv0u87vj+avrvat7XvvvL7wfeEfxffN9P/N7yvTPOp326oX2ffZ3ofXN8fvvf4OnvTfR9cX78f+D5Z97vD+m+Tf3fC/W78Pe7P4XvG/0bVb9ffx+rXD96mYfq+4W+Pru+Efl/+vKrv6z4/8bXwuv/fVXVv8XvV5284Vv606Wv9fvhbpt8K/C3S78ffL3X/q/wGvF8G/83ofS/U/93pXp9er3mv9K2bN+zPhuun36uqv8vfK6bfe/rvpv6fDfcE/65Zf8+M/p2pfivP78LfwzBff67w/6fP63Vf+e6Z3gfm/+X3QfVPk793vA+qT6m6rfXvefX/4fN5UffB9W++t+h/g/7M9Lv9O9P/R/O9Uf+uM7wHvBfX8T79+6SvxXD97qvvWbXfwvfv79O94fvO53PevNfn74vXfv8b6feG7zfvt/77v+Xv6fPqM98Hw/wM9/P6u+F3pvrvpv+GvuZ9DfcEv5/6bCjvhflV8166D+b99f3pf7/fO/rt6PfrvevvGvP5ofvTfM7q91T/f9LvZ9Ufm+u7zX+Wnvffr3XvDveb+rvNvz/m1+s2XF+qf9f6XvTfS+H7Z8D3XvjdMv/v6rvG9P+mv0/49/j/DvfG9N/G/w3/Lp7vv6bvhf996d9ZfX+Gf5fPZ6vffX5++XvMv8tX0/wXwPdO0b9D/f6zXqfeF76WvA7wXvv67/Vn0vd38O+G/y66F+Z34u/ZgG99uD6Dff7t+B2pftP8f6vv0/T+rf6p6v/eNM97uO9708fA+83fqem9Nf+eeB0+S8fS/eA++N7o+6C6L7wGvk/DfdDvrV6fH+b3wHSe+p1vfd+Ff9+bfzP/f1O/u8P6b2N6v1Wfv+F+6PPg38Vn6T/8bUzvEa+vv4Xm+y3w/6rvqfA14Tqsvwfq9+u/+fsb+LvX9G+v7p9+E/n7oPobM69b6XfU/41p9fvyvWbCfxT+Fp9BfA56v8zvcThm6nPoG7Svn75O/b7z/6f7Z/770fWvXp+/Z8K9Dfc/G+6ffvf3Ovx7M9wH9f/W+6p/f/S7O0zfI77GfN9U7xOvmX+P1N/DoL6/RvgYqf+Dae4b/v7U9/wEfg/6b+XvmamvhffX/H0f3gfeN32Xer+bvub8d0P/bof3q7qveQ0M77feE76W+D5oeC9N67+B6T43fX1G95jef+E+N339GvOvybTphuXvvum7oPr3UfWp3kOqn76Hl/7f0ffu8Dnw39XvdXidYfyXFv8+mC6P/y78LfN7YHgNDPc3XIfp97zSfxvT3zP92+N3S5/j0r/P99Lfqel9Z9j/Tf7G6v+u32Z6r6wPf0/q95f5+zY8n4TphrWeqP7dmP6p+e+L6ftHw2foL8f/n3of6N9v6u8R/t8w3bDx+7/P6/A9YLoM96O/v/V74vvp622Yv9vU/6z194Fvn+lX4ftt+m+or336r/H9pOk/9W/Cvyemv77Wv88G04fVv4Fp1X8vvF7vI0/Tr5m+u83vNen7T68T76fpu6Zvw70+PZ/+u8N/N9gfo+/HwOfn/w6+R/Q/WvpfP9Nre5p638H/0X99p//1+9O/w33S/78AepwAAAAASUVORK5CYII=" alt="2ndHome Tab Icon">
+
+    <!-- External Assets and Tailwind CSS Stylesheets -->
+    <script src="https://tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    
+    <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://aistudiocdn.com@^19.2.0/",
+        "react": "https://aistudiocdn.com@^19.2.0",
+        "react-dom/": "https://aistudiocdn.com-dom@^19.2.0/",
+        "@google/genai": "https://aistudiocdn.com@^1.28.0",
+        "leaflet": "https://aistudiocdn.com@^1.9.4",
+        "react-leaflet": "https://aistudiocdn.com-leaflet@^4.2.1"
       }
     }
-</script>
-<link rel="stylesheet" href="/index.css">
+    </script>
+    
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'brand-primary': '#DD6B20',       // Terracotta/Orange for buttons and accents
+                'brand-primary-light': '#FBD38D', // Lighter shade for hover/backgrounds
+                'brand-secondary': '#6D4C41',     // Muted Brown for sub-headings
+                'brand-dark': '#3E2723',          // Darkest Brown for text/footers
+                'brand-background': '#FFF8F0',    // Warm Beige/Off-white for page background
+                'brand-surface': '#FFFFFF',       // Clean white for cards and modals
+              }
+            }
+          }
+        }
+    </script>
+    <link rel="stylesheet" href="/index.css">
 </head>
 <body class="bg-brand-background">
     <div id="root"></div>
-    
-    <!-- Updated display picture code -->
-    <div class="fixed top-4 right-4 z-[9999]">
-        <img src="image_JkKQDr.png" alt="User Profile Picture" class="w-12 h-12 rounded-full object-cover border-2 border-brand-primary shadow-md">
-    </div>
 
     <script type="module" src="/index.tsx"></script>
 </body>
